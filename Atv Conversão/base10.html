@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão Base 10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Conversão de Bases Numéricas</h1>
+        <p>Descubra a importância das diferentes bases numéricas e seus usos no mundo da computação e da programação.</p>
+    </header>
+
+    <section class="bases">
+        <div class="base-card">
+            <h2>Base 10 (Decimal)</h2>
+            <p><strong>Uso:</strong> A base decimal é a mais utilizada no dia a dia e em diversas aplicações. Cada dígito em um número decimal representa uma potência de 10.</p>
+            <p><strong>Vantagem:</strong> É a base mais familiar para a maioria das pessoas, facilitando a leitura e a compreensão.</p>
+        </div>
+
+        <div class="base-card">
+            <h3>Conversor de Base 10</h3>
+            <label for="decimal">Insira um número em decimal (ex: 125):</label>
+            <input type="text" id="decimal" placeholder="Digite um número decimal" style="padding: 10px; width: 100%; margin: 10px 0;">
+            <button class="btn">Converter</button>
+            <div class="resultado">
+                <h3>Resultado</h3>
+                <p id="resultadoBinario"><strong>Binário:</strong> --</p>
+                <p id="resultadoHexadecimal"><strong>Hexadecimal:</strong> --</p>
+                <p id="resultadoOctal"><strong>Octal:</strong> --</p>
+            </div>
+        </div>
+        <a href="index.html" class="btn" style="background-color: brown;">↩Fazer outras conversões ↩</a>
+    </section>
+    
+    <script>
+        document.querySelector("button.btn").addEventListener("click", converterDecimal);
+        document.getElementById("decimal").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                converterDecimal();
+            }
+        });
+
+        function converterDecimal() {
+            const decimalInput = document.getElementById("decimal").value;
+
+        
+            if (!/^\d+$/.test(decimalInput)) {
+                alert("Por favor, insira um número decimal válido.");
+                return;
+            }
+
+            
+            const decimal = parseInt(decimalInput, 10);
+            const binario = decimal.toString(2);
+            const hexadecimal = decimal.toString(16).toUpperCase();
+            const octal = decimal.toString(8);
+            document.getElementById("resultadoBinario").innerHTML = `<strong>Binário:</strong> ${binario}`;
+            document.getElementById("resultadoHexadecimal").innerHTML = `<strong>Hexadecimal:</strong> ${hexadecimal}`;
+            document.getElementById("resultadoOctal").innerHTML = `<strong>Octal:</strong> ${octal}`;
+        }
+    </script>
+       <footer>
+        <div class="footer-content">
+            <p>© 2024 Conversão de Bases Numéricas. Todos os direitos reservados.</p>
+            <p>Aluno: Athos Bernardes Telini | GitHub: <a href="https://github.com/AthosTelini" target="_blank">AthosTelini</a></p>
+            <p>Disciplina: Redes de Computadores II</p>
+            <p>Professor: Fábio Corsini</p>
+        </div>
+    </footer>
+</body>
+</html>

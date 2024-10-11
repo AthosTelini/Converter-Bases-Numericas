@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão Base 16</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Conversão de Bases Numéricas</h1>
+        <p>Descubra a importância das diferentes bases numéricas e seus usos no mundo da computação e da programação.</p>
+    </header>
+
+    <section class="bases">
+        <div class="base-card">
+            <h2>Base 16 (Hexadecimal)</h2>
+            <p><strong>Uso:</strong> A base hexadecimal é amplamente utilizada em computação, especialmente para representar endereços de memória e cores em programação.</p>
+            <p><strong>Vantagem:</strong> A representação compacta de números binários permite uma leitura mais fácil, além de facilitar a escrita de números grandes.</p>
+        </div>
+
+        <div class="base-card">
+            <h3>Conversor de Base 16</h3>
+            <label for="hexadecimal">Insira um número em hexadecimal (ex: 7F):</label>
+            <input type="text" id="hexadecimal" placeholder="Digite um número hexadecimal" style="padding: 10px; width: 100%; margin: 10px 0;">
+            <button class="btn">Converter</button>
+            <div class="resultado">
+                <h3>Resultado</h3>
+                <p id="resultadoBinario"><strong>Binário:</strong> --</p>
+                <p id="resultadoDecimal"><strong>Decimal:</strong> --</p>
+                <p id="resultadoOctal"><strong>Octal:</strong> --</p>
+            </div>
+        </div>
+        <a href="index.html" class="btn" style="background-color: brown;">↩Fazer outras conversões ↩</a>
+    </section>
+    
+    <script>
+        document.querySelector("button.btn").addEventListener("click", converterHexadecimal);
+        document.getElementById("hexadecimal").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                converterHexadecimal();
+            }
+        });
+
+        function converterHexadecimal() {
+            const hexInput = document.getElementById("hexadecimal").value;
+
+            if (!/^[0-9A-Fa-f]+$/.test(hexInput)) {
+                alert("Por favor, insira um número hexadecimal válido.");
+                return;
+            }
+
+         
+            const decimal = parseInt(hexInput, 16);
+            const binario = decimal.toString(2);
+            const octal = decimal.toString(8);
+
+            document.getElementById("resultadoBinario").innerHTML = `<strong>Binário:</strong> ${binario}`;
+            document.getElementById("resultadoDecimal").innerHTML = `<strong>Decimal:</strong> ${decimal}`;
+            document.getElementById("resultadoOctal").innerHTML = `<strong>Octal:</strong> ${octal}`;
+        }
+    </script>
+       <footer>
+        <div class="footer-content">
+            <p>© 2024 Conversão de Bases Numéricas. Todos os direitos reservados.</p>
+            <p>Aluno: Athos Bernardes Telini | GitHub: <a href="https://github.com/AthosTelini" target="_blank">AthosTelini</a></p>
+            <p>Disciplina: Redes de Computadores II</p>
+            <p>Professor: Fábio Corsini</p>
+        </div>
+    </footer>
+</body>
+</html>

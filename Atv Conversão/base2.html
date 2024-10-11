@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão Base 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Conversão de Bases Numéricas</h1>
+        <p>Descubra a importância das diferentes bases numéricas e seus usos no mundo da computação e da programação.</p>
+    </header>
+
+    <section class="bases">
+        <div class="base-card">
+            <h2>Base 2 (Binária)</h2>
+            <p><strong>Uso:</strong> A base binária é fundamental na computação. Cada dígito binário, conhecido como bit, pode representar dois estados: 0 (desligado) ou 1 (ligado). Isso é essencial para o funcionamento dos circuitos eletrônicos e da lógica digital.</p>
+            <p><strong>Vantagem:</strong> A simplicidade da base binária facilita a implementação de circuitos eletrônicos, pois os componentes só precisam distinguir entre dois estados. Isso resulta em maior eficiência e confiabilidade nos sistemas digitais.</p>
+            
+        </div>
+
+        <div class="base-card">
+            <h3>Conversor de Base 2</h3>
+            <label for="binario">Insira um número em binario (ex: 11000110)</label>
+            <input type="text" id="binario" placeholder="Digite um número binário" style="padding: 10px; width: 100%; margin: 10px 0;">
+            <button class="btn">Converter</button>
+            <div class="resultado">
+                <h3>Resultado</h3>
+                <p id="resultadoDecimal"><strong>Decimal:</strong> --</p>
+                <p id="resultadoHexadecimal"><strong>Hexadecimal:</strong> --</p>
+                <p id="resultadoOctal"><strong>Octal:</strong> --</p>
+            </div>
+        </div>
+        <a href="index.html" class="btn" style="background-color: brown;">↩Fazer outras conversões ↩</a>
+    </section>
+    
+    <script>
+        document.querySelector("button.btn").addEventListener("click", converterBinario);
+        document.getElementById("binario").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                converterBinario();
+            }
+        });
+
+        function converterBinario() {
+            const binarioInput = document.getElementById("binario").value;
+
+            if (!/^[01]+$/.test(binarioInput)) {
+                alert("Por favor, insira um número binário válido.");
+                return;
+            }
+
+            const decimal = parseInt(binarioInput, 2);
+            const hexadecimal = decimal.toString(16).toUpperCase();
+            const octal = decimal.toString(8);
+
+            document.getElementById("resultadoDecimal").innerHTML = `<strong>Decimal:</strong> ${decimal}`;
+            document.getElementById("resultadoHexadecimal").innerHTML = `<strong>Hexadecimal:</strong> ${hexadecimal}`;
+            document.getElementById("resultadoOctal").innerHTML = `<strong>Octal:</strong> ${octal}`;
+        }
+    </script>
+       <footer>
+        <div class="footer-content">
+            <p>© 2024 Conversão de Bases Numéricas. Todos os direitos reservados.</p>
+            <p>Aluno: Athos Bernardes Telini | GitHub: <a href="https://github.com/AthosTelini" target="_blank">AthosTelini</a></p>
+            <p>Disciplina: Redes de Computadores II</p>
+            <p>Professor: Fábio Corsini</p>
+        </div>
+    </footer>
+</body>
+</html>
